@@ -1,0 +1,54 @@
+
+<div>
+  <label for="b-input">B Timer (ms)</label>
+  <input id="b-input" [(ngModel)]="bInterval">
+</div>
+
+<div>
+  <label for="c-input">C Timer (ms)</label>
+  <input id="c-input" [(ngModel)]="cInterval">
+</div>
+
+<div>
+  <label for="number-offset">Random Number Offset</label>
+  <input id="number-offset" [(ngModel)]="numberOffset">
+</div>
+
+<div>
+  <label for="should-round-checkbox">Should Round</label>
+  <input id="should-round-checkbox" type="checkbox" [(ngModel)]="shouldRound">
+</div>
+
+<div>
+  <label for="hide-extra-As">Hide Extra A Values</label>
+  <input id="hide-extra-As" type="checkbox" [(ngModel)]="hideAValues">
+</div>
+
+<div>
+  <button type="button" (click)="updateObservables()">Update Timers</button>
+</div>
+
+<div>
+  <p *ngIf="a$ | async as A">
+    A = {{ A }}
+  </p>
+
+  <ng-container *ngIf="hideAValues === false">
+    <p *ngIf="aSquared$ | async as aSquared">
+      A<sup>2</sup> = {{ aSquared }}
+    </p>
+
+    <p *ngIf="sqrtA$ | async as sqrtA">
+      SqrtA = {{ sqrtA }}
+    </p>
+  </ng-container>
+  
+
+  <p *ngIf="b$ | async as B">
+    B = {{ B }}
+  </p>
+
+  <p *ngIf="c$ | async as C">
+    C = {{ C }}
+  </p>
+</div>
